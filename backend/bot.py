@@ -20,7 +20,6 @@ async def start(update, context: ContextTypes.DEFAULT_TYPE) -> None:
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Welcome to UpTon💰💰', reply_markup=reply_markup)
 
-
 loop = asyncio.get_event_loop()
 if not loop.is_running():
     asyncio.set_event_loop(loop)
