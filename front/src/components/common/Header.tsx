@@ -8,9 +8,8 @@ import IcWalletDisconnect from "@/assets/icons/Landing/ic_landing_wallet_disconn
 
 import DisconnectModal from "../main/Modal/DisconnectModal";
 import useTonConnect from "@/hooks/contract/useTonConnect";
-import MainMyAssetInfo from "../main/MainMyAssetInfo";
-import { useStakeInfo } from "@/hooks/api/useStakeInfo";
 import { mutate } from "swr";
+import MainMyAssetInfo from "../main/MainMyAssetInfo";
 
 interface HeaderProps {
   isOpen: boolean;
@@ -21,7 +20,6 @@ interface HeaderProps {
 const Header = (props: HeaderProps) => {
   const { address, balance, refreshTonData, connected, tonConnectUI } = useTonConnect();
   const { isOpen, text, backgroundType } = props;
-  const { nftList, isLoading, isError } = useStakeInfo(address);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const navigate = useNavigate();
@@ -55,11 +53,6 @@ const Header = (props: HeaderProps) => {
     };
   }, [refreshTonData, address]);
 
-  // Calculate the total amount staked
-  const totalStaked = useMemo(() => {
-    return nftList?.reduce((acc, nft) => acc + nft.amount, 0) || 0;
-  }, [nftList]);
-
   const handleRouter = () => {
     if (isOpen) {
       navigate(-1);
@@ -81,9 +74,9 @@ const Header = (props: HeaderProps) => {
             address={address}
             balance={balance}
             refreshTonData={refreshTonData}
-            totalStaked={totalStaked}
-            isLoading={isLoading || isRefreshing}
-            isError={isError}
+            totalStaked={0}
+            isLoading={false || isRefreshing}
+            isError={false}
           />
           {pathname === "/" && connected && (
             <DisconnectButton $connect={connected}>
