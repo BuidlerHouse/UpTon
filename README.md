@@ -40,6 +40,9 @@ Don't stress about the details—upTon’s got your back. We’ll automatically 
 #### Features
 
 * Pump list
+   * PUMP IT [add liquidity] 
+       * three optionals button or pay as you want
+   * Progress Bar & Total Raised
 * Create a Pump
    * Name 
    * Description [Optional]
@@ -47,6 +50,4 @@ Don't stress about the details—upTon’s got your back. We’ll automatically 
    * Sticker [Optional]
    * Community [Optional, link]
    * PUMP It
-* Details of Pump
-   * PUMP IT [add liquidity] 
-       * three optionals button or pay as you want
+
