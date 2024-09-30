@@ -20,13 +20,13 @@ const SelectBox = styled(Select)`
 
 const PumpList = [
   {
-    coin: 'FARM',
+    coin: "FARM",
     ...getLiquityAndVolume(),
     createdTime: Date.now(),
     image: "https://artefarm.s3.ap-southeast-1.amazonaws.com/hackathon/test.png",
   },
   {
-    coin: 'COIN',
+    coin: "COIN",
     ...getLiquityAndVolume(),
     createdTime: Date.now(),
     image: "https://artefarm.s3.ap-southeast-1.amazonaws.com/hackathon/coin_big.png",
@@ -184,7 +184,10 @@ const Main = () => {
         {tabSelection === "list" ? (
           <ContentContainer>
             {sortedPumpList.map((pump, index) => (
-              <Card key={index} style={{ margin: "2rem", borderRadius: "16px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}>
+              <Card
+                key={index}
+                style={{ margin: "2rem", borderRadius: "16px", boxShadow: "0 4px 8px rgba(0,0,0,0.1)" }}
+              >
                 <CardContent>
                   <TokenInfoContainer>
                     <CardMedia
@@ -193,7 +196,7 @@ const Main = () => {
                       image={pump.image}
                       alt={pump.coin}
                       style={{ borderRadius: "50%", width: "140px", marginRight: "2rem", cursor: "pointer" }}
-                      onClick={() => window.open(`https://t.me/addstickers/${pump.coin}_by_pump_upton_bot`, '_blank')}
+                      onClick={() => window.open(`https://t.me/addstickers/${pump.coin}_by_pump_upton_bot`, "_blank")}
                     />
                     <TokenDetails>
                       <PumpCard>
@@ -216,10 +219,7 @@ const Main = () => {
                     </ProgressBarContainer>
                   </ProgressBarContainerMain>
                   <CardActions style={{ display: "flex", justifyContent: "space-between", marginTop: "1rem" }}>
-                    <SelectBox
-                      value={value[index] || "0.1"}
-                      onChange={(event) => handleChange(index, event)}
-                    >
+                    <SelectBox value={value[index] || "0.1"} onChange={event => handleChange(index, event)}>
                       <MenuItem value="0.1">0.1 TON</MenuItem>
                       <MenuItem value="1">1 TON</MenuItem>
                       <MenuItem value="10">10 TON</MenuItem>
@@ -235,7 +235,10 @@ const Main = () => {
                               if (true) {
                                 setPumpList(prev => {
                                   const newPumpList = [...prev];
-                                  if (newPumpList[index].currentLiquity + selectedValue > newPumpList[index].totalVolume) {
+                                  if (
+                                    newPumpList[index].currentLiquity + selectedValue >
+                                    newPumpList[index].totalVolume
+                                  ) {
                                     toast("You can't put more than total volume");
                                     return newPumpList;
                                   }
@@ -264,9 +267,7 @@ const Main = () => {
             ))}
           </ContentContainer>
         ) : (
-          <ContentContainer>
-            {/* Create content here */}
-          </ContentContainer>
+          <ContentContainer>{/* Create content here */}</ContentContainer>
         )}
       </MainWrapper>
 
