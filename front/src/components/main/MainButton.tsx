@@ -11,7 +11,7 @@ const MainButton = () => {
 
   const handleSwitchWalletFunction = () => {
     if (connected) {
-      navigate("/stake/amount");
+      return;
     } else {
       tonConnectUI.connectWallet();
     }
@@ -21,7 +21,7 @@ const MainButton = () => {
     <TonWalletWrapper onClick={handleSwitchWalletFunction}>
       {connected ? (
         <TonConnectCenterBox>
-          <img src={IcWalletStake} alt="stake" /> Let's stake TON
+          <img src={IcWalletStake} alt="stake" /> {`${tonConnectUI.account?.address.slice(0, 6)}...${tonConnectUI.account?.address.slice(-4)}`}
         </TonConnectCenterBox>
       ) : (
         <TonConnectCenterBox>
