@@ -25,6 +25,7 @@ At upTon, community is king. The people holding the most tokens are seen as the 
 
 **People Can Come and Go**: Influence changes as people buy or sell tokens, keeping the community dynamic and evolving.
 
+**Tonlink Integration**: Integrating with off-chain oracle to achieve more functionality and composability. 
 
    
 ### How It Works
@@ -39,15 +40,21 @@ At upTon, community is king. The people holding the most tokens are seen as the 
 
 ### How to Start a New MemeCoin on upTon
 
-All you need: a name, a ticker, and a meme. Description? Totally optional. 😎
+All you need: a name, a meme, and a tg group link. Description? Totally optional. 😎 
 
-Don't stress about the details—upTon’s got your back. We’ll automatically set up your community link and create custom stickers for you. It’s as easy as launching a new group chat!
+Don't stress about the details — upTon’s got your back. We’ll automatically set up your community link and create custom stickers for you in the bot. The only thing you need to do is to talk with the bot, entering name, meme, and tg group link. 
 
 - **Instant Community Creation**: Forget setting up groups manually! upTon does it for you, preparing a link ready to share right when your token is launched.
 - **Custom Stickers**: Each token gets its own sticker that users can send to their friends, promoting your token in a fun and viral way.
 - **Effortless Sharing**: Share your token easily within Telegram chats. upTon makes it simple for your community to invite others and spread the word.
 - **Pinned Messages**: Automatically pin key announcements or milestones in your Telegram group to keep your members updated and excited.
 - **Token Leader Changes**: Automatically assign access to community settings to top 5 largest token holders of the day.
+
+### upTon Viral Growth Mechanism Plan
+
+**Initiator Special Reward**: Once a community finishes charging phase and enters boom phase, the initiator can get TON tokens as reward. 
+
+**Invite2Earn**: Invite people to participate. TON tokens are rewarded based on how much you and your friends contributed. 
 
 
 #### YO, UPTON FUNK YOU UP 
@@ -66,4 +73,6 @@ Don't stress about the details—upTon’s got your back. We’ll automatically 
    * Sticker [Optional]
    * Community [Optional, link]
    * PUMP It
+
+
 
