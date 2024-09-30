@@ -15,15 +15,16 @@ Be a **meme leader** with no burden. Launching a token on upTon is as easy as se
 
 At upTon, community is king. The people holding the most tokens are seen as the largest contributors to the project, playing a pivotal role in shaping the direction and growth of the community. As your stake in the token grows, so does your influence.
 
+**Viral Stickers**: Stikcers spread virally. Each token comes with a custom sticker in telegram. As community shares and sends stickers in chats, it naturally promotes your token.
+
 **Token-Based Influence**: Top5 holders can access to Telegram settings of the community group. (Access changed on a daily basis.)
+
+**Fair Token Incentive**: Fair launch for all and the tokens are the natural incentive for people to contribute and be active.
 
 **Self-Governance**: The community is fluid, decentralized, and leadership shifts naturally with token distribution.
 
-**Viral Stickers**: Stikcers spread virally. Each token comes with a custom sticker in telegram. As community shares and sends stickers in chats, it naturally promotes your token.
-
 **People Can Come and Go**: Influence changes as people buy or sell tokens, keeping the community dynamic and evolving.
 
-**Fair Token Incentive**: Fair launch for all and the tokens are the natural incentive for people to contribute and be active.
 
    
 ### How It Works
