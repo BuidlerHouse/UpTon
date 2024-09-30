@@ -2,9 +2,8 @@
 
 ### What’s upTon?
 
-Catch UpTon!
-
-UpTon is a Telegram mini app that takes token launches to the next level, focusing on **community**, fun, and of course, **stickers**! Built on the TON ecosystem, upTon gives you the tools to quickly create a vibrant community around your new token while adding some flair with custom Telegram stickers.
+Catch UpTon! UpTon is a Telegram mini app that takes token launches to the next level on TON. 
+At upTon, **community is everything**! The more tokens you hold, the more influence you have. Top holders get access to Telegram settings, shaping the community's direction. With **viral stickers** and a fluid, self-governing structure, the community grows naturally. Plus, every token starts with a **fair launch**, keeping things fun, fair, and decentralized! 🎉
 
 Be a **meme leader** with no burden. Launching a token on upTon is as easy as sending a message on Telegram. We make sure your community gets built, and everyone can join in the fun.
 
@@ -17,7 +16,7 @@ At upTon, community is king. The people holding the most tokens are seen as the 
 
 1. **Token-Based Influence**: Top5 holders can access to Telegram settings of the community group. (Access changed on a daily basis.)
 2. **Self-Governance**: The community is fluid, decentralized, and leadership shifts naturally with token distribution.
-3. **Viral Stikcers**: Stikcers spread virally. Each token comes with a custom sticker in telegram. As community shares and sends stickers in chats, it naturally promotes your token.
+3. **Viral Stickers**: Stikcers spread virally. Each token comes with a custom sticker in telegram. As community shares and sends stickers in chats, it naturally promotes your token.
 4. **People Can Come and Go**: Influence changes as people buy or sell tokens, keeping the community dynamic and evolving.
 5. **Fair Token Incentive**: Fair launch for all and the tokens are the natural incentive for people to contribute and be active.
 
