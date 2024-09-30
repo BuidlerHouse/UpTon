@@ -23,6 +23,46 @@ async def start(update, context: ContextTypes.DEFAULT_TYPE) -> None:
     reply_markup = InlineKeyboardMarkup(keyboard)
     await update.message.reply_text('Welcome to UpTon💰💰', reply_markup=reply_markup)
 
+async def launch_token(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    if not context.args:
+        await update.message.reply_text("Please provide a symbol for the token. Usage: /launch_token SYMBOL")
+        return
+
+    symbol = context.args[0].upper()
+    context.user_data['launch_token'] = {
+        'symbol': symbol,
+        'step': 'name'
+    }
+    await update.message.reply_text(f"Great! You're launching token {symbol}. Please enter the name for this token.")
+
+async def process_launch_token(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+    launch_data = context.user_data.get('launch_token')
+    if not launch_data:
+        return
+
+    if launch_data['step'] == 'name':
+        launch_data['name'] = update.message.text
+        launch_data['step'] = 'image'
+        await update.message.reply_text("Token name received. Now, please upload an image for the token.")
+    
+    elif launch_data['step'] == 'image':
+        if update.message.document or update.message.photo:
+            file_id = update.message.document.file_id if update.message.document else update.message.photo[-1].file_id
+            launch_data['image'] = file_id
+            launch_data['step'] = 'community'
+            await update.message.reply_text("Image received. Now, please provide the community link.")
+        else:
+            await update.message.reply_text("Please upload an image for the token.")
+    
+    elif launch_data['step'] == 'community':
+        launch_data['community'] = update.message.text
+        # Here you would typically save the token data to your database
+        await update.message.reply_text(f"Token launch complete!\n"
+                                        f"Symbol: {launch_data['symbol']}\n"
+                                        f"Name: {launch_data['name']}\n"
+                                        f"Community: {launch_data['community']}")
+        del context.user_data['launch_token']
+
 async def add_sticker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.args:
         await update.message.reply_text("Please provide a symbol for the sticker set.")
@@ -106,7 +146,9 @@ app.add_handler(CommandHandler("hello", hello))
 app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("add_sticker", add_sticker))
 app.add_handler(CommandHandler("get_stickers", get_stickers))
+app.add_handler(CommandHandler("launch_token", launch_token))
 app.add_handler(MessageHandler(filters.PHOTO | filters.Document.IMAGE, process_sticker_image))
+app.add_handler(MessageHandler(filters.TEXT | filters.PHOTO | filters.Document.IMAGE, process_launch_token))
 app.add_handler(MessageHandler(filters.TEXT, process_sticker_emoji))
 print("Bot is running")
 app.run_polling()
