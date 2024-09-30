@@ -36,3 +36,17 @@ Don't stress about the details—upTon’s got your back. We’ll automatically 
 #### YO, UPTON FUNK YOU UP 
 ~UPTON FUNK YOU UP
 
+
+#### Features
+
+* Pump list
+* Create a Pump
+   * Name 
+   * Description [Optional]
+   * Symbot [Ticket]
+   * Sticker [Optional]
+   * Community [Optional, link]
+   * PUMP It
+* Details of Pump
+   * PUMP IT [add liquidity] 
+       * three optionals button or pay as you want
