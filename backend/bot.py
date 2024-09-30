@@ -37,31 +37,33 @@ async def launch_token(update: Update, context: ContextTypes.DEFAULT_TYPE) -> No
 
 async def process_launch_token(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     launch_data = context.user_data.get('launch_token')
-    if not launch_data:
-        return
-
-    if launch_data['step'] == 'name':
-        launch_data['name'] = update.message.text
-        launch_data['step'] = 'image'
-        await update.message.reply_text("Token name received. Now, please upload an image for the token.")
+    if launch_data:
+        if launch_data['step'] == 'name':
+            launch_data['name'] = update.message.text
+            launch_data['step'] = 'image'
+            await update.message.reply_text("Token name received. Now, please upload an image for the token.")
     
-    elif launch_data['step'] == 'image':
-        if update.message.document or update.message.photo:
-            file_id = update.message.document.file_id if update.message.document else update.message.photo[-1].file_id
-            launch_data['image'] = file_id
-            launch_data['step'] = 'community'
-            await update.message.reply_text("Image received. Now, please provide the community link.")
-        else:
-            await update.message.reply_text("Please upload an image for the token.")
-    
-    elif launch_data['step'] == 'community':
-        launch_data['community'] = update.message.text
-        # Here you would typically save the token data to your database
-        await update.message.reply_text(f"Token launch complete!\n"
-                                        f"Symbol: {launch_data['symbol']}\n"
-                                        f"Name: {launch_data['name']}\n"
-                                        f"Community: {launch_data['community']}")
-        del context.user_data['launch_token']
+        elif launch_data['step'] == 'image':
+            if update.message.document or update.message.photo:
+                file_id = update.message.document.file_id if update.message.document else update.message.photo[-1].file_id
+                launch_data['image'] = file_id
+                launch_data['step'] = 'community'
+                await update.message.reply_text("Image received. Now, please provide the community link.")
+            else:
+                await update.message.reply_text("Please upload an image for the token.")
+        
+        elif launch_data['step'] == 'community':
+            launch_data['community'] = update.message.text
+            # Here you would typically save the token data to your database
+            await update.message.reply_text(f"Token launch complete!\n"
+                                            f"Symbol: {launch_data['symbol']}\n"
+                                            f"Name: {launch_data['name']}\n"
+                                            f"Community: {launch_data['community']}")
+            del context.user_data['launch_token']
+    else:
+        result = await process_sticker_image(update, context)
+        if not result:
+            await process_sticker_emoji(update, context)
 
 async def add_sticker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.args:
@@ -79,7 +81,7 @@ async def add_sticker(update: Update, context: ContextTypes.DEFAULT_TYPE) -> Non
         'waiting_for_image': True
     })
 
-async def process_sticker_image(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
+async def process_sticker_image(update: Update, context: ContextTypes.DEFAULT_TYPE) -> bool:
     if context.user_data.get('waiting_for_image') and (update.message.document or update.message.photo):
         file_id = update.message.document.file_id if update.message.document else update.message.photo[-1].file_id
         
@@ -89,6 +91,8 @@ async def process_sticker_image(update: Update, context: ContextTypes.DEFAULT_TY
             'waiting_for_emoji': True
         })
         await update.message.reply_text("Image received! Now send the emoji for this sticker.")
+        return True
+    return False
 
 async def get_stickers(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     if not context.args:
@@ -115,7 +119,6 @@ async def process_sticker_emoji(update: Update, context: ContextTypes.DEFAULT_TY
         user = update.effective_user
         sticker_set_name = context.user_data['sticker_set_name']
         sticker_file_id = context.user_data['sticker_file_id']
-
         try:
             await context.bot.add_sticker_to_set(
                 user_id=user.id,
@@ -147,8 +150,6 @@ app.add_handler(CommandHandler("start", start))
 app.add_handler(CommandHandler("add_sticker", add_sticker))
 app.add_handler(CommandHandler("get_stickers", get_stickers))
 app.add_handler(CommandHandler("launch_token", launch_token))
-app.add_handler(MessageHandler(filters.PHOTO | filters.Document.IMAGE, process_sticker_image))
 app.add_handler(MessageHandler(filters.TEXT | filters.PHOTO | filters.Document.IMAGE, process_launch_token))
-app.add_handler(MessageHandler(filters.TEXT, process_sticker_emoji))
 print("Bot is running")
 app.run_polling()
