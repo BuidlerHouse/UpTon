@@ -17,7 +17,6 @@ const App = () => {
         <GlobalStyle />
         <ErrorModal />
         <Analytics />
-
         <Router />
       </RecoilRoot>
     </ThemeProvider>

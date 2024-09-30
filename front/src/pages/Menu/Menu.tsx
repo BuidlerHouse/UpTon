@@ -30,7 +30,6 @@ const Menu = () => {
 
   return (
     <MenuWrapper>
-      <Header isOpen={true} text="NEXTON" backgroundType={true} connected={connected} tonConnectUI={tonConnectUI} />
       <TopBar />
       <UpcomingMenu />
       <JoinCommunity />

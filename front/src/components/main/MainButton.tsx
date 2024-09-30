@@ -40,9 +40,7 @@ const TonWalletWrapper = styled.div`
   align-items: center;
 
   width: 100%;
-  height: 6rem;
-  margin-bottom: 3.7rem;
-  padding: 0.5rem 0;
+  padding: 1rem 2rem;
 
   border-radius: 42px;
   background-color: #1f53ff;

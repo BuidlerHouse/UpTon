@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import rollupNodePolyFill from "rollup-plugin-node-polyfills";
 import { defineConfig } from "vite";
-import fs from 'fs';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -34,12 +33,6 @@ export default defineConfig({
   build: {
     rollupOptions: {
       plugins: [rollupNodePolyFill()],
-    },
-  },
-  server: {
-    https: {
-      key: fs.readFileSync('key.pem'),
-      cert: fs.readFileSync('cert.pem'),
     },
   },
 });
