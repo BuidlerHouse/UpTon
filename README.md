@@ -6,18 +6,19 @@ Catch UpTon!
 
 upTon is a Telegram mini app that takes token launches to the next level, focusing on **community**, fun, and of course, **stickers**! Built on the TON ecosystem, upTon gives you the tools to quickly create a vibrant community around your new token while adding some flair with custom Telegram stickers.
 
-Be **Meme Leader** with no burden. Launching a token on upTon is as easy as sending a message on Telegram. We make sure your community gets built, and everyone can join in the fun.
+Be a **meme leader** with no burden. Launching a token on upTon is as easy as sending a message on Telegram. We make sure your community gets built, and everyone can join in the fun.
 
 
 <img src="./images/logo.png" alt="upTon Logo" width="200"/>
 
 ### How It Works
 
-1. **Pick a Token**: Browse through a selection of tokens on upTon, each launched fairly without presale or team allocations.
-2. **Buy Token**: Purchase your chosen token directly on the bonding curve, ensuring predictable pricing for each transaction.
-3. **Sell Anytime**: Sell your tokens whenever you like to lock in profits or mitigate losses.
-4. **Market Cap Milestone**: Once the token's market cap hits $45k, the token reaches its next phase.
-5. **Liquidity Adde**: $10k of liquidity is deposited into Raydium and burned for long-term stability.
+1. **Pick a Token**: Pick a cool token from upTon’s list
+2. **Buy Founding Token**: Purchase your founding token directly. Prices go up as more people buy in—so get in early.
+3. **Join Community**: Join in the community and get **funked up** with the stikers. Enjoy chatting and sharing.
+4. **Sell Anytime**: Want to cash in? No worries. You can sell your founding tokens anytime, locking in those sweet gains (or taking a small loss—hey, it happens!).
+5. **Charging Phase**: When the token's market cap hits a legendary $40k, it's time for the next phase.
+6. **Boom Phase - Liquidity Added**: Boom! Liquidity is locked into STON and burned.🔒🔥
 
 ### How to Start a New Coin on upTon
 
