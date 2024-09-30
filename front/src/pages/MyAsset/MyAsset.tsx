@@ -14,13 +14,6 @@ const MyAsset = () => {
 
   return (
     <MyAssetWrapper $type={pathname.includes("nftlist") ? true : false}>
-      <Header
-        isOpen={false}
-        backgroundType={pathname.includes("nftlist") ? false : true}
-        text="My Asset"
-        connected={connected}
-        tonConnectUI={tonConnectUI}
-      />
       <MyAssetContentWrapper>
         <NftHeader myAssetMenu={myAssetMenu} />
       </MyAssetContentWrapper>

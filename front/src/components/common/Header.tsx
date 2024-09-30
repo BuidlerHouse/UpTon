@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { styled } from "styled-components";
 
@@ -7,24 +7,58 @@ import IcWalletConnect from "@/assets/icons/Landing/ic_landing_wallet.svg";
 import IcWalletDisconnect from "@/assets/icons/Landing/ic_landing_wallet_disconnect.svg";
 
 import DisconnectModal from "../main/Modal/DisconnectModal";
+import useTonConnect from "@/hooks/contract/useTonConnect";
+import MainMyAssetInfo from "../main/MainMyAssetInfo";
+import { useStakeInfo } from "@/hooks/api/useStakeInfo";
+import { mutate } from "swr";
 
 interface HeaderProps {
   isOpen: boolean;
   text: string;
   backgroundType: boolean;
-  connected: boolean;
-  tonConnectUI: any;
 }
 
 const Header = (props: HeaderProps) => {
-  const { isOpen, text, backgroundType, connected, tonConnectUI } = props;
+  const { address, balance, refreshTonData, connected, tonConnectUI } = useTonConnect();
+  const { isOpen, text, backgroundType } = props;
+  const { nftList, isLoading, isError } = useStakeInfo(address);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
   const handleModalState = () => {
     setIsOpenModal(!isOpenModal);
   };
+
+  useEffect(() => {
+    async function handleRefreshData() {
+      setIsRefreshing(true);
+
+      try {
+        await Promise.all([refreshTonData(), mutate(`/data/getAllStakeInfoByAddress?address=${address}`)]);
+      } catch (error) {
+        console.error("An error occurred during the refresh operation:", error);
+      } finally {
+        setIsRefreshing(false);
+      }
+    }
+
+    handleRefreshData();
+
+    const timer = setInterval(() => {
+      handleRefreshData();
+    }, 20000);
+
+    return () => {
+      clearInterval(timer);
+    };
+  }, [refreshTonData, address]);
+
+  // Calculate the total amount staked
+  const totalStaked = useMemo(() => {
+    return nftList?.reduce((acc, nft) => acc + nft.amount, 0) || 0;
+  }, [nftList]);
 
   const handleRouter = () => {
     if (isOpen) {
@@ -39,11 +73,19 @@ const Header = (props: HeaderProps) => {
       {isOpenModal && <DisconnectModal handleModalState={handleModalState} />}
       <HeaderWrapper $isOpen={isOpen} $backgroundType={backgroundType}>
         <HeaderTitle onClick={() => navigate("/")}>{text}</HeaderTitle>
+
         <HeaderRightBox>
-          <ReferralButton onClick={() => navigate("/referral")}>
-            <img src={IcReferral} alt="referral" />
-          </ReferralButton>
-          {pathname === "/" && (
+          <MainMyAssetInfo
+            tonConnectUI={tonConnectUI}
+            connected={connected}
+            address={address}
+            balance={balance}
+            refreshTonData={refreshTonData}
+            totalStaked={totalStaked}
+            isLoading={isLoading || isRefreshing}
+            isError={isError}
+          />
+          {pathname === "/" && connected && (
             <DisconnectButton $connect={connected}>
               {connected ? (
                 <img src={IcWalletDisconnect} alt="walletConnectDisconnect" onClick={handleModalState} />
@@ -52,11 +94,6 @@ const Header = (props: HeaderProps) => {
               )}
             </DisconnectButton>
           )}
-          <MenuButton onClick={handleRouter} $isOpen={isOpen}>
-            <span></span>
-            <span></span>
-            <span></span>
-          </MenuButton>
         </HeaderRightBox>
       </HeaderWrapper>
     </>

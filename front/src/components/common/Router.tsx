@@ -25,26 +25,6 @@ const Router = () => {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/menu" element={<Menu />} />
-        <Route path="/referral" element={<Referral />} />
-        <Route path="/dashboard" element={<Dashboard />} />
-        <Route path="/stake/amount" element={<Amount />} />
-        <Route path="/stake/leverage" element={<Leverage />} />
-        <Route path="/stake/nominator" element={<NominatorList />} />
-        <Route path="/stake/preview" element={<NFTPreview />} />
-        <Route path="/loan" element={<Loan />} />
-        <Route path="/loan/:id" element={<BorrowDetail />} />
-        <Route path="/swap" element={<Swap />} />
-        <Route path="/nlp" element={<Nlp />} />
-        <Route path="/myasset" element={<MyAsset />}>
-          <Route path="nftlist" element={<NftList />} />
-          <Route path="unstaking" element={<UnstakingList />} />
-          <Route path="unstakingdetail" element={<UnstakingDetail />} />
-        </Route>
-        <Route path="/myasset/:id" element={<StakingNftDetail />} />
-        <Route path="/unstaking/:id" element={<UnstakingNftDetail />} />
-        <Route path="/unstaking/beta" element={<UnstakingBetaInfo />} />
-        <Route path="/unstaking/view/:id" element={<UnstakingNftDetail />} />
       </Routes>
     </BrowserRouter>
   );
